@@ -21,23 +21,17 @@ export async function getPosiciones() {
 
         table.forEach((row) => {
             const posicion = Number($(row).find('.bg-color:first').text().trim());
-
-            const equipo = $(row).find('.equipo').text().trim();
-
-            const puntos = Number($(row).find('.bg-color:eq(1)').text().trim());
-
-            const partidos_jugados = Number($(row).find('.d-none.d-md-table-cell:eq(0)').text().trim());
-            const partidos_ganados = Number($(row).find('.d-none.d-md-table-cell:eq(1)').text().trim());
-            const partidos_empatados = Number($(row).find('.d-none.d-md-table-cell:eq(2)').text().trim());
-            const partidos_perdidos = Number($(row).find('.d-none.d-md-table-cell:eq(3)').text().trim());
-
-            const goles_a_favor = Number($(row).find('.d-none.d-md-table-cell:eq(4)').text().trim());
-            const goles_en_contra = Number($(row).find('.d-none.d-md-table-cell:eq(5)').text().trim());
-            const diferencia_goles = Number($(row).find('.d-md-table-cell:last').text().trim());
-
+            const equipo = $(row).find('.equipo').find('span:first').text().trim();
+            const puntos = Number($(row).find('.bg-color:eq(2)').text().trim());
+            const partidos_jugados = Number($(row).find('.bg-color:eq(1)').text().trim());
+            const partidos_ganados = Number($(row).find('.d-none.d-md-table-cell:eq(0)').text().trim());
+            const partidos_empatados = Number($(row).find('.d-none.d-md-table-cell:eq(1)').text().trim());
+            const partidos_perdidos = Number($(row).find('.d-none.d-md-table-cell:eq(2)').text().trim());
+            const goles_a_favor = Number($(row).find('.d-none.d-md-table-cell:eq(3)').text().trim());
+            const goles_en_contra = Number($(row).find('.d-none.d-md-table-cell:eq(4)').text().trim());
+            // const diferencia_goles = Number($(row).find('.bg-color:eq(1)').text().trim());
             const escudo_url = $(row).find('.equipo img').attr('data-src');
-
-
+            const diferencia_goles = goles_a_favor - goles_en_contra;
 
             posiciones.push({
                 posicion,
